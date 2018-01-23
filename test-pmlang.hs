@@ -32,10 +32,10 @@ tests = TestList
   , wrap "test8"   "P(10,10)" ["P(x,y) -> if 6<x then (if y<19 then 42 else 19) else 34" ] (OK 42)
   , wrap "test9"   "5"        ["x -> x"] (OK 5)
   -- next should fail with silly eval
-  --, wrap "test101" "A(B,C)"   ["A(x,y) -> (tag x) + (tag y)"] (OK $ hash "B" + hash "C")
+  , wrap "test101" "A(B,C)"   ["A(x,y) -> (tag x) + (tag y)"] (OK $ hash "B" + hash "C")
   --, wrap "test102" "A(1,2)"   ["A(2,x) -> 42"
-  --                            ,"A(x,1) -> 42"
-  --                            ,"3      -> 42"
+  --                            "A(x,1) -> 42"
+  --                            "3      -> 42"
   --                            ,"A(2,1) -> 42"
   --                            ]
   --      PMatchFail

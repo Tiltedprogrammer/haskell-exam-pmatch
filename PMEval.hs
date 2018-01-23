@@ -75,6 +75,7 @@ eval w ((p,exp):cs) = case match w' p of
       comp e@(Constr _ _) p@(PConstr _ _, _) = calc $ reduce e p
       comp _ _ = PMatchFail
 
+--checks pattern and left expr match      
 match :: Exp -> Patt -> Bool
 match _ Wild = True
 match _ (Named _) = True
@@ -92,6 +93,7 @@ reduce _ (Wild, e) = case e of
     Const x                   -> Const x
     Boolean c                 -> Boolean c
     Tag (Constr name _)       -> Const $ hash name
+    Tag x                     -> Tag x
     Var x                     -> Var x
     Field i c@(Constr _ args) -> case lookup' args i of
       Just e  -> reduce' e
